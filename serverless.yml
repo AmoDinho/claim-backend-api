@@ -25,10 +25,10 @@ provider:
   #
   #environment: ${file(env.yml):${self:provider.stage}}
 
-functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: hello
-          method: get
+#functions:
+ # hello:
+  #  handler: handler.hello
+   # events:
+    #  - http:
+     #     path: hello
+      #    method: get
