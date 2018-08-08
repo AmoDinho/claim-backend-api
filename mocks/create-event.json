@@ -1,0 +1,8 @@
+{
+    "body": "{\"content\":\"hello world\",\"claimNumber\":\"123456\",\"email\":\"me@many.com\",\"attachment\":\"hello.jpg\",\"incidentDate\":\"09/07/2015\"}",
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
+    }
+  }
