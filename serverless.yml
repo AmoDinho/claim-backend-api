@@ -67,3 +67,4 @@ resources:
   - ${file(resources/s3-bucket.yml)}
   # cognito
   - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-identity-pool.yml))}
