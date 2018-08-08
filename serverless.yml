@@ -9,6 +9,11 @@ plugins:
 # serverless-webpack configuration
 # Enable auto-packing of external modules
 custom:
+  stage: ${opt:stage, self:provider.stage}
+  tableThroughputs:
+    prod: 5
+    default: 1
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage},self:custom.tableThroughputs.default}
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
@@ -24,6 +29,25 @@ provider:
   # commit your env.yml.
   #
   #environment: ${file(env.yml):${self:provider.stage}}
+  
+  envrionment:
+    tableName:
+      Ref: ClaimTable
+  
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+
+      Resource:
+        - "Fn::GetAtt": [ClaimTable, Arn]
+
 
 #functions:
  # hello:
@@ -32,3 +56,8 @@ provider:
     #  - http:
      #     path: hello
       #    method: get
+
+#create our resources with separate cloud formation temps
+resources:
+  #dynamodb
+  - ${file(resources/dynamodb-table.yml)}
