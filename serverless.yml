@@ -5,6 +5,7 @@ service: claim-backend-api
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-export-env
 
 # serverless-webpack configuration
 # Enable auto-packing of external modules
@@ -14,7 +15,7 @@ custom:
   tableThroughputs:
     prod: 5
     default: 1
-  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage},self:custom.tableThroughputs.default}
+  tableThroughput: ${self:custom.tableThroughputs.${self:custom.stage}, self:custom.tableThroughputs.default}
  
   webpack:
     webpackConfig: ./webpack.config.js
@@ -24,7 +25,7 @@ custom:
   # the following line. Also, make sure to not
   # commit your env.yml.
   #
-  environment: ${file(env.yml):${self:provider.stage}}
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
   
 provider:
   name: aws
@@ -61,7 +62,23 @@ functions:
          cors: true
          authorizer: aws_iam
 
-
+  get:
+    handler: get.main
+    events:
+     - http:
+         path: claims/{id}
+         method: get
+         cors: true
+         authorizer: aws_iam
+  
+  list: 
+    handler: list.main
+    events: 
+     - http: 
+         path: claims
+         method: get
+         cors: true
+         authorizer: aws_iam
 
 
 #create our resources with separate cloud formation temps

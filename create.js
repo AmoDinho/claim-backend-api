@@ -1,7 +1,6 @@
 //create claim
 
 import uuid from "uuid";
-import AWS from "aws-sdk";
 import { success, failure } from "./libs/response-lib";
 import * as dynamoDbLib from "./libs/dynamodb-lib";
 
@@ -12,7 +11,7 @@ export async function main(event, context, callback){
     const params = {
         TableName: process.env.tableName,
         Item: {
-            userId: event.requestContext.identity.cognitoIdentity,
+            userId: event.requestContext.identity.cognitoIdentityId,
             claimId: uuid.v1(),
             content: data.content,
             claimNumber: data.claimNumber,
