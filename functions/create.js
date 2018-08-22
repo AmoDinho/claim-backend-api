@@ -1,8 +1,8 @@
 //create claim
 
 import uuid from "uuid";
-import { success, failure } from "./libs/response-lib";
-import * as dynamoDbLib from "./libs/dynamodb-lib";
+import { success, failure } from "../libs/response-lib";
+import * as dynamoDbLib from "../libs/dynamodb-lib";
 
 
 export async function main(event, context, callback){

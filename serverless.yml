@@ -54,7 +54,7 @@ provider:
 
 functions:
   create:
-    handler: create.main
+    handler: functions/create.main
     events:
      - http: 
          path: claims
@@ -63,7 +63,7 @@ functions:
          authorizer: aws_iam
 
   get:
-    handler: get.main
+    handler: functions/get.main
     events:
      - http:
          path: claims/{id}
@@ -72,7 +72,7 @@ functions:
          authorizer: aws_iam
   
   list: 
-    handler: list.main
+    handler: functions/list.main
     events: 
      - http: 
          path: claims
@@ -81,14 +81,23 @@ functions:
          authorizer: aws_iam
   
   update: 
-    handler: update.main
+    handler: functions/update.main
     events:  
      - http:  
          path: claims/{id}
          method: put
          cors: true
          authorizer: aws_iam
-         
+
+  delete:
+    handler: functions/delete.main
+    events:
+     - http:
+         path: claims/{id}
+         method: delete
+         cors: true
+         authorizer: aws_iam
+
 #create our resources with separate cloud formation temps
 resources:
   #dynamodb
