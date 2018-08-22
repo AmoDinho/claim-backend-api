@@ -11,7 +11,7 @@ export async function main(event, context, callback){
 
         
         */
-        KeyconditionExpression: "userId = :userId",
+        KeyConditionExpression: "userId = :userId",
         ExpressionAttributeValues: {
             ":userId": event.requestContext.identity.cognitoIdentityId
         }

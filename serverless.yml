@@ -79,8 +79,16 @@ functions:
          method: get
          cors: true
          authorizer: aws_iam
-
-
+  
+  update: 
+    handler: update.main
+    events:  
+     - http:  
+         path: claims/{id}
+         method: put
+         cors: true
+         authorizer: aws_iam
+         
 #create our resources with separate cloud formation temps
 resources:
   #dynamodb

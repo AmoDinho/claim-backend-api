@@ -1,0 +1,11 @@
+{
+    "body": "{\"content\":\"new claim\",\"claimNumber\":\"145887\",\"email\":\"me@many.com\",\"attachment\":\"hello.jpg\",\"incidentDate\":\"09/07/2015\"}",
+    "pathParameters":{
+        "id":"685f0640-a607-11e8-b487-f75382e6ac33"
+    },
+    "requestContext":{
+        "identity":{
+            "cognitoIdentityId": "USER-SUB-1234"
+        }
+    }
+}
