@@ -98,6 +98,16 @@ functions:
          cors: true
          authorizer: aws_iam
 
+  billing:
+    handler: functions/billing.main
+    events: 
+      - http:
+          path: billing
+          method: post
+          cors: true
+          authorizer: aws_iam
+          
+
 #create our resources with separate cloud formation temps
 resources:
   #dynamodb
