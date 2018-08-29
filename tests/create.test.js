@@ -1,3 +1,4 @@
+/*
 import uuid from "uuid";
 import * as dynamoDbLib from "../libs/dynamodb-lib";
 import AWS from 'aws-sdk-mock';
@@ -39,3 +40,5 @@ test(`Replies back with a JSON for an unsuccessfull created claim`, () =>{
         `Unable to create claim`
     );
 });
+
+*/
