@@ -1,10 +1,10 @@
 import uuid from "uuid";
 import * as dynamoDbLib from "../libs/dynamodb-lib";
 import AWS from 'aws-sdk-mock';
-import create from '../functions/create';
-import {promisify} from "util";
 
-const handler = promisify(create);
+//import {promisify} from "util";
+
+const handler = require('../functions/create');
 
 //Add the params here
 
@@ -20,12 +20,12 @@ afterAll(() =>{
   AWS.restore('DynamoDB');
 });
 
-test(`Replies back with a JSON for successfull created claim`, () =>{
+test(`Replies back with a JSON for successfull created claim`, async () =>{
     const event = {};
     const context = {};
 
 
-    const result = handler(event, context);
+    const result = await handler(event, context);
     result.then(data => expect(data).toMatchSnapshot());
     
 });
