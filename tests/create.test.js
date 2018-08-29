@@ -1,4 +1,4 @@
-/*
+
 import uuid from "uuid";
 import * as dynamoDbLib from "../libs/dynamodb-lib";
 import AWS from 'aws-sdk-mock';
@@ -9,7 +9,7 @@ const handler = require('../functions/create');
 
 //Add the params here
 
-describe(`Create Claim: Dynamodb mock for successfull claim creation`, ()=>{
+describe.skip(`Create Claim: Dynamodb mock for successfull claim creation`, ()=>{
   beforeAll(() => {
     AWS.mock('DynamoDB', 'putItem', function(params, callback){
         callback(null, "Created a Claim");
@@ -21,7 +21,7 @@ afterAll(() =>{
   AWS.restore('DynamoDB');
 });
 
-test(`Replies back with a JSON for successfull created claim`, async () =>{
+test.skip(`Replies back with a JSON for successfull created claim`, async () =>{
     const event = {};
     const context = {};
 
@@ -31,7 +31,7 @@ test(`Replies back with a JSON for successfull created claim`, async () =>{
     
 });
 
-test(`Replies back with a JSON for an unsuccessfull created claim`, () =>{
+test.skip(`Replies back with a JSON for an unsuccessfull created claim`, () =>{
 
     const event = {};
     const context = {};
@@ -41,4 +41,3 @@ test(`Replies back with a JSON for an unsuccessfull created claim`, () =>{
     );
 });
 
-*/
